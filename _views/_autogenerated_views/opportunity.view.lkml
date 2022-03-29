@@ -15,7 +15,7 @@ view: opportunity {
   }
 
   dimension: amount {
-    type: string
+    type: number
     sql: ${TABLE}."Amount" ;;
   }
 
@@ -29,9 +29,20 @@ view: opportunity {
     sql: ${TABLE}."CampaignId" ;;
   }
 
-  dimension: close_date {
-    type: string
-    sql: ${TABLE}."CloseDate" ;;
+  dimension_group: close_date {
+    type: time
+    convert_tz: yes
+    datatype: date
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql:  CAST(${TABLE}."CloseDate" as TIMESTAMP);;
   }
 
   dimension: contract_id {
@@ -44,18 +55,45 @@ view: opportunity {
     sql: ${TABLE}."CreatedById" ;;
   }
 
-  dimension: created_date {
-    type: string
+  dimension_group: created_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."CreatedDate" ;;
   }
 
-  dimension: date_demarrage__c {
-    type: string
+  dimension_group: date_demarrage__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."DateDemarrage__c" ;;
   }
 
-  dimension: date_fin_contrat__c {
-    type: string
+  dimension_group: date_fin_contrat__c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."DateFinContrat__c" ;;
   }
 
@@ -75,12 +113,12 @@ view: opportunity {
   }
 
   dimension: duree_engagement_mois__c {
-    type: string
+    type: number
     sql: ${TABLE}."DureeEngagementMois__c" ;;
   }
 
   dimension: expected_revenue {
-    type: string
+    type: number
     sql: ${TABLE}."ExpectedRevenue" ;;
   }
 
@@ -139,28 +177,74 @@ view: opportunity {
     sql: ${TABLE}."IsWon" ;;
   }
 
-  dimension: last_activity_date {
-    type: string
+  dimension_group: last_activity_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."LastActivityDate" ;;
   }
 
-  dimension: last_modified_by_id {
-    type: string
+  dimension_group: last_modified_by_id {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."LastModifiedById" ;;
   }
 
-  dimension: last_modified_date {
-    type: string
+  dimension_group: last_modified_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."LastModifiedDate" ;;
   }
 
-  dimension: last_referenced_date {
-    type: string
+  dimension_group: last_referenced_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."LastReferencedDate" ;;
   }
 
-  dimension: last_viewed_date {
-    type: string
+
+  dimension_group: last_viewed_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."LastViewedDate" ;;
   }
 
@@ -235,12 +319,12 @@ view: opportunity {
   }
 
   dimension: pricebook2_id {
-    type: string
+    type: number
     sql: ${TABLE}."Pricebook2Id" ;;
   }
 
   dimension: probability {
-    type: string
+    type: number
     sql: ${TABLE}."Probability" ;;
   }
 
