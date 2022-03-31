@@ -423,6 +423,11 @@ view: opportunity {
     sql: ${TABLE}."Type" ;;
   }
 
+  dimension: pipeline_pondere {
+    type: number
+  sql:(${opportunity.probability}*${opportunity.amount})/100;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, stage_name, name, forecast_category_name]
